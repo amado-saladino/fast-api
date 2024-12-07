@@ -22,7 +22,7 @@ async def create_department(
     departments = read_db("departments")
     new_department = {
         "id": str(int(time.time() * 1000)),
-        **department.dict(),
+        **department.model_dump(),
         "createdAt": str(time.time())
     }
     departments.append(new_department)
@@ -65,7 +65,7 @@ async def patch_department(
     if department_idx is None:
         raise HTTPException(status_code=404, detail="Department not found")
     
-    update_data = department_update.dict(exclude_unset=True)
+    update_data = department_update.model_dump(exclude_unset=True)
     if not update_data:
         raise HTTPException(status_code=400, detail="No fields to update")
     
