@@ -1,0 +1,7 @@
+# Ignore all files in the logs directory
+logs/*
+
+# Keep the logs directory itself
+!logs/
+
+__pycache__/

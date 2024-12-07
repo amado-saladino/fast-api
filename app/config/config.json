@@ -1,0 +1,7 @@
+{
+  "auth": {
+    "tokenExpirationMinutes": 60,
+    "secretKey": "your-super-secret-key-change-in-production",
+    "algorithm": "HS256"
+  }
+}
