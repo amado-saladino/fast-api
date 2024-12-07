@@ -151,6 +151,7 @@ To contribute to the project:
 3. Write or update tests if necessary
 4. Submit a pull request
 
-## License
+## Dev Container
 
-[Add your license information here]
+Python base image is available [here](https://mcr.microsoft.com/en-us/artifact/mar/devcontainers/python/about)
+
