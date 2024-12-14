@@ -1,0 +1,7 @@
+{
+    "name": "FastAPI",
+    "dockerComposeFile": ["../../docker-compose.yml"],
+    "service": "app",
+    "shutdownAction": "stopCompose",
+    "workspaceFolder": "/workspace"
+}
