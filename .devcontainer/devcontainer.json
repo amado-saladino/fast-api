@@ -1,7 +1,0 @@
-{
-    "name": "FastAPI",
-    "build": {
-        "dockerfile": "Dockerfile",
-        "context": ".."
-    }
-}

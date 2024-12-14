@@ -2,10 +2,11 @@ from datetime import datetime, timedelta, timezone
 from typing import Optional
 from jose import JWTError, jwt
 from passlib.context import CryptContext
+import bcrypt
 from fastapi import Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer
 from ..config.database import read_db
-from ..models.schemas import TokenData
+from ..models.user import TokenData
 from ..config.settings import config
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
@@ -15,11 +16,22 @@ SECRET_KEY = config["auth"]["secretKey"]
 ALGORITHM = config["auth"]["algorithm"]
 ACCESS_TOKEN_EXPIRE_MINUTES = config["auth"]["tokenExpirationMinutes"]
 
-def verify_password(plain_password: str, hashed_password: str) -> bool:
-    return pwd_context.verify(plain_password, hashed_password)
+def hash_password(password):
+    pwd_bytes = password.encode('utf-8')
+    salt = bcrypt.gensalt()
+    hashed_password = bcrypt.hashpw(password=pwd_bytes, salt=salt)
+    return hashed_password
 
-def get_password_hash(password: str) -> str:
-    return pwd_context.hash(password)
+def verify_password(plain_password, hashed_password)->bool:
+    password_byte_enc = plain_password.encode('utf-8')
+    hashed_password_enc = hashed_password.encode('utf-8')
+    return bcrypt.checkpw(password = password_byte_enc , hashed_password = hashed_password_enc)
+
+# def verify_password(plain_password: str, hashed_password: str) -> bool:
+#     return pwd_context.verify(plain_password, hashed_password)
+
+# def get_password_hash(password: str) -> str:
+#     return pwd_context.hash(password)
 
 def create_access_token(data: dict, expires_delta: Optional[timedelta] = None):
     to_encode = data.copy()
