@@ -2,6 +2,6 @@
 logs/*
 
 # Keep the logs directory itself
-!logs/
+!.gitkeep
 
 __pycache__/
