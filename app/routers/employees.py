@@ -2,7 +2,7 @@ from fastapi import APIRouter, Depends, HTTPException
 from typing import List
 from ..utils.auth import get_current_user
 from ..config.database import read_db, write_db
-from ..models.schemas import Employee, EmployeeBase, EmployeePatch
+from ..models.employee import Employee, EmployeeBase, EmployeePatch
 from ..utils.logger import logger
 import time
 

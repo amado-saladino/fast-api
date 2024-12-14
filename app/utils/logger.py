@@ -33,3 +33,27 @@ def setup_logger():
     return logger
 
 logger = setup_logger()
+
+# Add specific auth logging methods
+def log_failed_login(username: str, reason: str):
+    """
+    Log failed login attempts with username and reason.
+    
+    Args:
+        username (str): The username that failed to login
+        reason (str): The reason for the login failure
+    """
+    logger.warning(
+        f"Failed Login Attempt\nUsername: {username}\nReason: {reason}"
+    )
+
+def log_successful_login(username: str):
+    """
+    Log successful login attempts.
+    
+    Args:
+        username (str): The username that successfully logged in
+    """
+    logger.info(
+        f"Successful Login\nUsername: {username}"
+    )

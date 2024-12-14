@@ -16,27 +16,38 @@ A FastAPI-based REST API for managing employees and departments with authenticat
 
 ```
 .
-├── app/
-│   ├── config/
-│   │   └── database.py
-│   ├── data/
-│   │   ├── departments.json
-│   │   ├── employees.json
-│   │   └── users.json
-│   ├── models/
-│   │   └── schemas.py
-│   ├── routers/
-│   │   ├── auth.py
-│   │   ├── departments.py
-│   │   ├── employees.py
-│   │   └── health.py
-│   ├── utils/
-│   │   ├── auth.py
-│   │   └── logger.py
-│   └── main.py
+├── app
+│   ├── config
+│   │   ├── config.json
+│   │   ├── database.py
+│   │   ├── __init__.py
+│   │   └── settings.py
+│   ├── data
+│   │   ├── departments.json
+│   │   ├── employees.json
+│   │   └── users.json
+│   ├── __init__.py
+│   ├── main.py
+│   ├── models
+│   │   ├── department.py
+│   │   ├── employee.py
+│   │   ├── __init__.py
+│   │   └── user.py
+│   ├── routers
+│   │   ├── auth.py
+│   │   ├── departments.py
+│   │   ├── employees.py
+│   │   ├── health.py
+│   │   └── __init__.py
+│   └── utils
+│       ├── auth.py
+│       ├── __init__.py
+│       └── logger.py
+├── docker-compose.yml
+├── Dockerfile
 ├── logs/
-├── requirements.txt
-└── README.md
+├── README.md
+└── requirements.txt
 ```
 
 ## Prerequisites
@@ -150,6 +161,14 @@ To contribute to the project:
 2. Implement your changes
 3. Write or update tests if necessary
 4. Submit a pull request
+
+## Watch dev container logs
+
+As the application is running in a dev container that starts the server automatically, the logs can be watched from another terminal using docker:
+
+```sh
+docker logs -f <CONTAINER_ID> | <CONTAINER_NAME>
+```
 
 ## Dev Container
 
