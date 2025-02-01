@@ -174,3 +174,16 @@ docker logs -f <CONTAINER_ID> | <CONTAINER_NAME>
 
 Python base image is available [here](https://mcr.microsoft.com/en-us/artifact/mar/devcontainers/python/about)
 
+## Swarm
+
+```sh
+# build first
+docker build -t fast-api:1 .
+
+# stack
+docker stack deploy fast-web --compose-file docker-compose.yml
+
+# or a single service
+docker service create --name web-1 \
+--publish 8001:8000 --replicas 1 fast-api:1
+```
